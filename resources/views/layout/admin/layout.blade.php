@@ -85,10 +85,14 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <form action="/logout" method="post">
+                @csrf 
+              <button class="dropdown-item d-flex align-items-center" type="submit">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
-              </a>
+              </button>
+                
+              </form>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -105,7 +109,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link {{ $title == 'Dashboard' ? '' : 'collapsed' }}" href="/">
+        <a class="nav-link {{ $title == 'Dashboard' ? '' : 'collapsed' }}" href="/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
