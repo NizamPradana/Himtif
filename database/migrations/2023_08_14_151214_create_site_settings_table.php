@@ -17,6 +17,12 @@ return new class extends Migration
             $table->text('visi');
             $table->text('misi');
             $table->text('kontak');
+            $table->text('foto_logo')->nullable();
+            $table->text('foto_angkatan')->nullable();
+            $table->text('foto_ketua')->nullable();
+            $table->text('foto_wakil')->nullable();
+            $table->text('foto_sekretaris')->nullable();
+            $table->text('foto_bendahara')->nullable();
             $table->timestamps();
         });
     }

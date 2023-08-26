@@ -21,8 +21,7 @@ class SiteSettingSeeder extends Seeder
             'misi' => "<ul><li>Mengembangkan soft skill, kepribadian, kreativitas dan menyalurkan potensi setiap mahasiswa jurusan.</li><li>Sebagai penyalur aspirasi sekaligus pendukung untuk memperluas wawasan di bidang teknologi dan informasi.</li><li>Membangun dan menjaga solidaritas yang baik antar jurusan.</li>
             <li>Menjalin keharmonisan seluruh elemen jurusan teknik informatika dan lembaga lain.</li></ul>",
 
-            'kontak' => "<ul><li>Instagram : himtifpp</li><li>email : himtif@gmail.com</li><li>WA : 089218321932</li>
-            <li>Menjalin keharmonisan seluruh elemen jurusan teknik informatika dan lembaga lain.</li></ul>"
+            'kontak' => "<ul><li>Instagram : himtifpp</li><li>email : himtif@gmail.com</li><li>WA : 089218321932</li></ul>"
         ]);
     }
 }

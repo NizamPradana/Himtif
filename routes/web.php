@@ -8,6 +8,7 @@ use App\Http\Controllers\AnggotaDivisiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProkerController;
 use App\Http\Controllers\DetailProkerController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\SiteSettingController;
 
 
@@ -50,6 +51,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/site', [SiteSettingController::class, 'index']);
     // Route::post('/site', [SiteSettingController::class, 'store']);
     Route::put('/site', [SiteSettingController::class, 'update']);
+    Route::put('/site/update_foto', [SiteSettingController::class, 'updateFoto']);
 
     //Route auth
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -59,3 +61,6 @@ Route::middleware(['auth'])->group(function (){
 // auth route
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+
+// guest route
+Route::get('/', [GuestController::class, 'index']);

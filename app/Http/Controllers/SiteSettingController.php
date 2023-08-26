@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SiteSetting;
 use App\Http\Requests\StoreSiteSettingRequest;
 use App\Http\Requests\UpdateSiteSettingRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class SiteSettingController extends Controller
 {
@@ -76,6 +78,10 @@ class SiteSettingController extends Controller
             'kontak' => 'required',
         ]);
 
+
+        
+
+
         SiteSetting::where('id', $validatedData['id'])->update([
             'sejarah' => $request->sejarah,
             'visi' => $request->visi,
@@ -86,11 +92,57 @@ class SiteSettingController extends Controller
         return redirect('/site')->with(['success' => 'Berhasil Mengubah data']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SiteSetting $siteSetting)
-    {
-        //
+    
+
+    public function updateFoto(UpdateSiteSettingRequest $request, SiteSetting $siteSetting){
+
+        // validasi data inputan
+        $validatedData = $request->validate([
+            'foto_logo' => 'image|mimes:jpeg,png,jpg|max:5048',
+            'foto_angkatan' => 'image|mimes:jpeg,png,jpg|max:5048',
+            'foto_ketua' => 'image|mimes:jpeg,png,jpg|max:5048',
+            'foto_wakil' => 'image|mimes:jpeg,png,jpg|max:5048',
+            'foto_bendahara' => 'image|mimes:jpeg,png,jpg|max:5048',
+            'foto_sekretaris' => 'image|mimes:jpeg,png,jpg|max:5048',
+        ]);
+
+        //mengambil data terakhir sebbelum di update
+        $oldData = SiteSetting::first();
+        
+        $attributes = [
+            'foto_logo',
+            'foto_angkatan',
+            'foto_ketua',
+            'foto_wakil',
+            'foto_bendahara',
+            'foto_sekretaris',
+        ];
+        
+        foreach ($attributes as $attribute) {
+            if (!$request->hasFile($attribute)) {
+                $validatedData[$attribute] = $oldData->$attribute;
+            }else{
+
+                // cek apakah ada dile sebelumnya yg tersimpan
+                if($oldData->$attribute != null){
+                    Storage::delete($oldData->$attribute);
+                }                
+                $validatedData[$attribute] = $request->file($attribute)->store('aset-foto');
+            }
+        }
+        
+        
+        SiteSetting::first()->update([
+            'foto_logo' => $validatedData['foto_logo'],
+            'foto_angkatan' => $validatedData['foto_angkatan'],
+            'foto_ketua' => $validatedData['foto_ketua'],
+            'foto_wakil' => $validatedData['foto_wakil'],
+            'foto_bendahara' => $validatedData['foto_bendahara'],
+            'foto_sekretaris' => $validatedData['foto_sekretaris'],
+        ]);
+
+        return redirect('/site')->with(['success' => "Berhasil Mengubah Aset Foto"]);
+        
     }
+
 }
