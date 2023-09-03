@@ -13,6 +13,9 @@ class Divisi extends Model
 
     protected $fillable = [
         'divisi',
+        'logo_divisi',
+        'foto_divisi',
+        'deskripsi'
     ];
 
     protected $hidden = [

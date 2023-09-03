@@ -53,7 +53,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#top">Beranda</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#about">Tentang</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#kepengurusan">Kepengurusan</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#divisi">Divisi</a></li>
@@ -80,7 +80,7 @@
                                 <button class="btn btn-outline-success text-center mb-3 w-sm-50 w-lg-100">Daftar</button>
                             </div>
                         </div>
-                        <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid " src="guest/assets/img/logos/logo HIMTIF.png" alt="" /></div>
+                        <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid " src="{{ asset('storage/'.$siteSetting->foto_logo) }}" alt="" /></div>
                     </div>
                     <div class="swiper">
                         <div class="swiper-container swiper-shadow swiper-theme" data-swiper='{"slidesPerView":2,"breakpoints":{"640":{"slidesPerView":2,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":40},"992":{"slidesPerView":5,"spaceBetween":40},"1024":{"slidesPerView":4,"spaceBetween":50},"1025":{"slidesPerView":6,"spaceBetween":50}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"loop":true,"freeMode":true,"autoplay":{"delay":2500,"disableOnInteraction":false}}'>
@@ -111,7 +111,7 @@
 
             <div class="container">
                 <div class="text-center mb-4 "><span class="fs-5">About</span></div>
-                <img class="img-fluid rounded-4" src="guest/assets/img/bg-1.jpg" alt="" />
+                <img class="img-fluid rounded-4" src="{{ asset('storage/'.$siteSetting->foto_angkatan) }}" alt="" />
                 <div class="row mt-4 align-items-center">
                     <div class="col-md-6">
                         <h2 class="fs-md-2 fs-2 pt-2 text-justify">
@@ -164,11 +164,11 @@
                 </div>
 
                 <div class="gallery-wraper pb-2 mt-6">
-                    <div class="img-wraper"><img class="img-fluid" src="guest/assets/img//user/BPH/Tegar.png" alt="" /></div>
+                    <div class="img-wraper"><img class="img-fluid" src="{{ asset('storage/'.$siteSetting->foto_ketua) }}" alt="" /></div>
                     <div class="img-wraper"><img class="img-fluid w-100" src="guest/assets/img//user/BPH/Periode.png" alt="" /></div>
-                    <div class="img-wraper"><img class="img-fluid" src="guest/assets/img//user/BPH/Fadia.png" alt="" /></div>
-                    <div class="img-wraper"><img class="img-fluid" src="guest/assets/img//user/BPH/Bendahara.png" alt="" /></div>
-                    <div class="img-wraper"><img class="img-fluid" src="guest/assets/img//user/BPH/Sekretaris.png" alt="" /></div>
+                    <div class="img-wraper"><img class="img-fluid" src="{{ asset('storage/'.$siteSetting->foto_wakil) }}" alt="" /></div>
+                    <div class="img-wraper"><img class="img-fluid" src="{{ asset('storage/'.$siteSetting->foto_bendahara) }}" alt="" /></div>
+                    <div class="img-wraper"><img class="img-fluid" src="{{ asset('storage/'.$siteSetting->foto_sekretaris) }}" alt="" /></div>
                 </div>
             </div>
         </section>

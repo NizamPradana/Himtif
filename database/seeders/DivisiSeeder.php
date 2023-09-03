@@ -15,12 +15,15 @@ class DivisiSeeder extends Seeder
     {
         DB::table('divisi')->insert([
             'divisi' => 'Divisi Pendidikan',
+            'deskripsi' => 'Merupakan Divisi yang kinerja kerjanya berkaitan dengan pengembangan ilmu pengetahuan.'
         ]);
         DB::table('divisi')->insert([
             'divisi' => 'Divisi Sosial Kemasyarakatan',
+            'deskripsi' => 'Merupakan Divisi yang jalan dibidang sosial kemasyarakatan baik dalam maupun luar kampus.',
         ]);
         DB::table('divisi')->insert([
             'divisi' => 'Divisi Kominfo',
+            'deskripsi' => 'Merupakan Divisi yang mengumpulkan atau mencari informasi terkait aspirasi mahasiswa.'
         ]);
     }
 }

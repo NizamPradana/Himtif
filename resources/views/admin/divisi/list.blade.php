@@ -68,12 +68,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" method="POST" action="/divisi/store">
+                <form class="row g-3" method="POST" action="/divisi/store" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">Divisi</label>
                         <input type="text" name="divisi" class="form-control" id="inputNanme4">
                     </div>
+                    <div class="col-12">
+                        <label for="" class="form-label">Logo Divisi</label>
+                        <input type="file" name="logo_divisi" class="form-control" id="">
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="form-label">Foto Divisi</label>
+                        <input type="file" name="foto_divisi" class="form-control" id="">
+                    </div>
+                    
+                    <label class="p mt-3" for="deskripsi">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control" cols="10" rows="5"></textarea>
+
+
                     <div class="text-end">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Save</button>
@@ -93,12 +106,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" method="POST" action="/divisi/update/{{ $row->id }}">
+                <form class="row g-3" method="POST" action="/divisi/update/{{ $row->id }}" enctype="multipart/form-data">
                     @csrf
+
+                    <input type="hidden" name="id" value="{{ $row->id }}">
+
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">Divisi</label>
                         <input type="text" name="divisi" class="form-control" id="inputNanme4" value="{{ $row->divisi }}" required>
                     </div>
+                    <div class="col-12">
+                        <img class="w-50 d-block border-1 my-2 rounded" src="{{ asset('storage/'.$row->logo_divisi) }}" alt="">
+                        <label for="" class="form-label">Ubah Logo Divisi</label>
+                        <input type="file" name="logo_divisi" class="form-control" id="">
+                    </div>
+                    <div class="col-12">
+                        <img class="w-50 d-block border-1 my-2 rounded" src="{{ asset('storage/'.$row->foto_divisi) }}" alt="">
+                        <label for="" class="form-label">Ubah Foto Divisi</label>
+                        <input type="file" name="foto_divisi" class="form-control" id="">
+                    </div>
+                    
+                    <label class="p mt-3" for="deskripsi">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control" cols="10" rows="5">{{ $row->deskripsi }}</textarea>
+
                     <div class="text-end">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Save</button>
