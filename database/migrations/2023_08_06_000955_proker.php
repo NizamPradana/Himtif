@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('proker', function (Blueprint $table) {
             $table->id();
             $table->string('proker');
+            $table->text('thumbnail')->nullable();
             $table->date('tanggal_pelaksanaan');
             $table->integer('id_divisi');
             $table->timestamps();

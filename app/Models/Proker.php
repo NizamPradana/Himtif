@@ -13,6 +13,7 @@ class Proker extends Model
 
     protected $fillable = [
         'proker',
+        'thumbnail',
         'tanggal_pelaksanaan',
         'id_divisi'
     ];

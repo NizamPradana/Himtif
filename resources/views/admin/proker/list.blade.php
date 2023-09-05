@@ -31,6 +31,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Proker</th>
+                                <th scope="col">Thumbnail</th>
                                 <th scope="col">Tanggal Pelaksanaan</th>
                                 <th scope="col">Divisi</th>
                                 <th scope="col">Action</th>
@@ -44,7 +45,10 @@
                             <tr>
                                 <th scope="row">{{ $no++ }}</th>
                                 <td>{{ $row->proker }}</td>
-                                <td>{{ $row->tanggal_pelaksanaan }}</td>
+                                <td>
+                                    <img src="{{ asset('storage/'.$row->thumbnail) }}" width="100" class="rounded bordered" alt="">
+                                </td>
+                                <td>{{ date('d M Y', strtotime($row->tanggal_pelaksanaan)) }}</td>
                                 <td>{{ $row->divisi }}</td>
                                 <td>
                                     <a href="/detail/{{ $row->id }}/{{ $row->id_divisi }}" class="btn btn-info"><i class="bi bi-eye"></i></a>
@@ -70,19 +74,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" method="POST" action="/proker/store">
+                <form class="row g-3" method="POST" action="/proker/store" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">Proker</label>
                         <input type="text" name="proker" class="form-control" id="inputNanme4">
                     </div>
                     <div class="col-12">
+                        <label for="inputNanme6"  class="form-label">Thumbnail</label>
+                        <input type="file" name="thumbnail" class="form-control" id="inputNanme6" required>
+                    </div>
+                    <div class="col-12">
                         <label for="inputNanme5" class="form-label">Tanggal Pelaksanaan</label>
-                        <input type="date" name="tgl_pelaksanaan" class="form-control" id="inputNanme5">
+                        <input type="date" name="tanggal_pelaksanaan" class="form-control" id="inputNanme5">
                     </div>
                     <div class="col-12">
                         <label for="inputSelect" class="form-label">Divisi</label>
-                        <select name="divisi" class="form-select" aria-label="Default select example" required>
+                        <select name="id_divisi" class="form-select" aria-label="Default select example" required>
                             <option selected>-- Pilih Divisi --</option>
                             @foreach ($divisi as $s)
                                 <option value="{{ $s->id }}">{{ $s->divisi }}</option>

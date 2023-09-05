@@ -23,16 +23,29 @@ class ProkerController extends Controller
         return view('admin.proker.list', $data);
     }
 
+
+
+
     public function store(Request $request)
     {
-        Proker::create([
-            'proker'              => $request->proker,
-            'tanggal_pelaksanaan' => $request->tgl_pelaksanaan,
-            'id_divisi'           => $request->divisi,
+
+        $validatedData = $request->validate([
+            'proker' => 'required',
+            'tanggal_pelaksanaan' => 'required',
+            'id_divisi' => 'required',
+            'thumbnail' => 'required|image',
         ]);
+
+        $validatedData['thumbnail'] = $request->File('thumbnail')->store('proker');
+
+        Proker::create($validatedData);
 
         return redirect('/proker')->with('success', 'Data Berhasil Simpan');
     }
+
+
+
+
 
     public function update(Request $request, $id)
     {
@@ -60,6 +73,8 @@ class ProkerController extends Controller
             }
             $detailProker->delete();
         }
+
+        Storage::delete($mainProker->thumbnail);
 
         $mainProker->delete();
 

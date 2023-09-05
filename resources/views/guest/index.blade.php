@@ -59,7 +59,6 @@
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#divisi">Divisi</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#album">Album</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#contact">Contact</a></li>
-                        <li class="nav-item mt-2 mt-lg-0"><a class="nav-link btn btn-light text-black w-md-25 w-50 w-lg-100" aria-current="page" href="#">Log In</a></li>
                     </ul>
                 </div>
             </div>
@@ -183,24 +182,14 @@
                 <p class="text-center fs-5">Divisi Pengurus HIMTIF</p>
                 <h2 class="mx-auto text-center fs-lg-5 w-lg-75">Himpunan Teknik Informatika Politeknik Purbaya</h2>
                 <div class="row gx-xl-7 mt-5">
+                    @foreach($dataDivisi as $divisi)
                     <div class="col-md-4 mb-6 mb-md-0 text-center text-md-start">
-                        <img class="w-50 w-md-100 rounded-3" src="guest/assets/img//user/DESAIN SOSKEM/1.png" alt="" />
-                        <h4 class="mt-3 my-1 text-uppercase fw-semi-bold text-center">Divisi Soskem</h4>
-                        <p class="fs-1 mb-0 text-justify">Merupakan Divisi yang jalan dibidang sosial kemasyarakatan baik dalam maupun luar kampus</p>
-                        <a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="soskem.html">Lihat Detail<i class="fa-solid fa-arrow-right ms-2"></i></a>
+                        <img class="w-50 w-md-100 rounded-3" src="{{ asset('storage/'.$divisi->foto_divisi) }}" alt="{{ $divisi->divisi }}" />
+                        <h4 class="mt-3 my-1 text-uppercase fw-semi-bold text-center">{{ $divisi->divisi }}</h4>
+                        <p class="fs-1 mb-0 text-justify">{{ $divisi->deskripsi }}</p>
+                        <a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="/divisi/{{ $divisi->id }}">Lihat Detail<i class="fa-solid fa-arrow-right ms-2"></i></a>
                     </div>
-                    <div class="col-md-4 mb-6 mb-md-0 text-center text-md-start">
-                        <img class="w-50 w-md-100 rounded-3" src="guest/assets/img//user/DESAIN PENDIDIKAN/Div Pendidikan.png" alt="" />
-                        <h4 class="mt-3 my-1 text-uppercase fw-semi-bold text-center">Divisi Pendidikan</h4>
-                        <p class="fs-1 mb-0 text-justify">Merupakan Divisi yang kinerja kerjanya berkaitan dengan pengembangan ilmu pengetahuan. </p>
-                        <a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="pendidikan.html">Lihat Detail<i class="fa-solid fa-arrow-right ms-2"></i></a>
-                    </div>
-                    <div class="col-md-4 mb-6 mb-md-0 text-center text-md-start">
-                        <img class="w-50 w-md-100 rounded-3" src="guest/assets/img//user/DESAIN KOMINFO/Kominfo.png" alt="" />
-                        <h4 class="mt-2 my-1 text-uppercase fw-semi-bold text-center">Divisi Kominfo</h4>
-                        <p class="fs-1 mb-0 text-justify">Merupakan Divisi yang mengumpulkan atau mencari informasi terkait aspirasi mahasiswa.</p>
-                        <a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="kominfo.html">Lihat Detail<i class="fa-solid fa-arrow-right ms-2"></i></a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <!-- end of .container-->
@@ -224,66 +213,20 @@
                     <div class="p-2"></div>
                     <div class="swiper-container swiper-theme" data-swiper='{"slidesPerView":1,"breakpoints":{"640":{"slidesPerView":1,"spaceBetween":10},"768":{"slidesPerView":2,"spaceBetween":10},"1025":{"slidesPerView":3,"spaceBetween":40}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"},"loop":true,"freeMode":true,"loopedSlides":3}'>
                         <div class="swiper-wrapper">
+                            {{-- ********************************* --}}
+                            @foreach ($dataProker as $proker)
                             <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
                                 <div class="d-flex flex-column justify-content-between h-100">
-                                    <img class="img-fluid rounded-3 h-50" src="guest/assets/img/gallery/makrab22.jpeg" alt="">
-                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="guest/assets/img/logos/logo_soskem.png" alt="" />
+                                    <img class="img-fluid rounded-3 h-50" src="{{ asset('storage/'.$proker->thumbnail) }}" alt="">
+                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="{{ asset('storage/'.$proker->logo_divisi) }}" alt="" />
                                         <div class="text-black">
-                                            <p class="mb-0 fw-bold text-dark">Makrab</p><small>Divisi Soskem</small>
+                                            <p class="mb-0 fw-bold text-dark">{{ $proker->proker }}</p><small>{{ $proker->divisi }}</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                                <div class="d-flex flex-column justify-content-between h-100">
-                                    <img class="img-fluid rounded-3 h-50" src="guest/assets/img/gallery/bg3.jpg" alt="">
-                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="guest/assets/img/logos/logo_pendidikan.png" alt="" />
-                                        <div class="text-black">
-                                            <p class="mb-0 fw-bold text-dark">Pelatihan Ujicode</p><small>Divisi Pendidikan</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                                <div class="d-flex flex-column justify-content-between h-100">
-                                    <img class="img-fluid rounded-3 h-50" src="guest/assets/img/gallery/makrabpengurus.jpeg" alt="">
-                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="guest/assets/img/logos/logo_soskem.png" alt="" />
-                                        <div class="text-black">
-                                            <p class="mb-0 fw-bold text-dark">Makrab Pengurus</p><small>Divisi Soskem</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                                <div class="d-flex flex-column justify-content-between h-100">
-                                    <img class="img-fluid rounded-3 h-50" src="guest/assets/img/gallery/Hima_Harber.jpg" alt="">
-                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="guest/assets/img/logos/logo_kominfo.png" alt="" />
-                                        <div class="text-black">
-                                            <p class="mb-0 fw-bold text-dark">Seminar</p><small>Divisi Kominfo</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                                <div class="d-flex flex-column justify-content-between h-100">
-                                    <img class="img-fluid rounded-3 h-50" src="guest/assets/img/gallery/ngobar.jpg" alt="">
-                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="guest/assets/img/logos/logo_pendidikan.png" alt="" />
-                                        <div class="text-black">
-                                            <p class="mb-0 fw-bold text-dark">Ngoding Bareng(NGOBAR)</p><small>Divisi Pendidikan</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                                <div class="d-flex flex-column justify-content-between h-100">
-                                    <img class="img-fluid rounded-3 h-50" src="guest/assets/img/gallery/bg2.jpg" alt="">
-                                    <div class="d-flex align-items-center gap-3 mt-3"><img style="width: 80px;" src="guest/assets/img/logos/logo_soskem.png" alt="" />
-                                        <div class="text-black">
-                                            <p class="mb-0 fw-bold text-dark">TI Berbagi</p><small>Divisi Soskem</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            {{-- ********************************** --}}
                         </div>
                     </div>
                     <div class="swiper-button-next"><span class="fas fa-arrow-right fs-lg-3 fs-2"></span></div>

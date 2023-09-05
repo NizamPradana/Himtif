@@ -64,3 +64,4 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // guest route
 Route::get('/', [GuestController::class, 'index']);
+Route::get('/divisi/{id_divisi}', [GuestController::class, 'detailDivisi']);
